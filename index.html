@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VORTEX K-Ultra Pro — Ультралегкая киберспортивная мышь</title>
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Подключение шрифтов Inter и Rajdhani для техно-стиля -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Базовые CSS-переменные для динамической смены темы */
+        :root {
+            --accent: #00f0ff;
+            --accent-rgb: 0, 240, 255;
+            --mouse-body: #14151c;
+            --mouse-panels: #1d1f29;
+            --mouse-shell-stroke: #2c3040;
+            --bg-dark: #0a0a0e;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-tech {
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        /* Стили матового стекла (Glassmorphism) */
+        .glass-panel {
+            background: rgba(20, 21, 28, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(var(--accent-rgb), 0.4);
+            box-shadow: 0 10px 40px -10px rgba(var(--accent-rgb), 0.15);
+        }
+
+        /* Динамическое неоновое свечение */
+        .neon-text {
+            color: var(--accent);
+            text-shadow: 0 0 20px rgba(var(--accent-rgb), 0.45);
+            transition: all 0.4s ease;
+        }
+
+        .neon-border {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.25);
+        }
+
+        .neon-btn {
+            background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.9), rgba(var(--accent-rgb), 0.65));
+            color: #050508;
+            font-weight: 700;
+            box-shadow: 0 0 25px rgba(var(--accent-rgb), 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .neon-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(var(--accent-rgb), 0.75);
+            filter: brightness(1.1);
+        }
+
+        .neon-btn-outline {
+            background: rgba(var(--accent-rgb), 0.08);
+            border: 1px solid rgba(var(--accent-rgb), 0.5);
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .neon-btn-outline:hover {
+            background: rgba(var(--accent-rgb), 0.2);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.3);
+        }
+
+        /* Фоновая техно-сетка */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Радиальный градиент подсветки за мышью */
+        .hero-glow {
+            background: radial-gradient(circle, rgba(var(--accent-rgb), 0.22) 0%, rgba(var(--accent-rgb), 0.05) 45%, transparent 70%);
+            transition: background 0.5s ease;
+        }
+
+        /* Плавная анимация левитации девайса */
+        @keyframes floatDevice {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(-1deg); }
+        }
+
+        .animate-float {
+            animation: floatDevice 5s ease-in-out infinite;
+        }
+
+        /* Плавные переходы для SVG-элементов мыши */
+        #mouse-svg * {
+            transition: fill 0.45s ease, stroke 0.45s ease, filter 0.45s ease;
+        }
+
+        /* Кастомный скроллбар */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262936;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+    </style>
+</head>
+<body class="bg-grid-pattern selection:bg-white/20 selection:text-white">
+
+    <!-- Навигационная панель (Sticky Glass Header) -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-panel border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Логотип -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 group-hover:border-[var(--accent)] transition-colors">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 4L12 20L20 4H16L12 12L8 4H4Z" fill="var(--accent)"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-tech text-2xl font-extrabold tracking-wider text-white leading-none">VORTEX</span>
+                    <span class="text-[10px] uppercase tracking-[0.25em] text-gray-400">Gaming Gear</span>
+                </div>
+            </a>
+
+            <!-- Навигационные ссылки (Desktop) -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#configurator" class="hover:text-white transition-colors">Конфигуратор</a>
+                <a href="#specs" class="hover:text-white transition-colors">Характеристики</a>
+                <a href="#comparison" class="hover:text-white transition-colors">Сравнение</a>
+                <a href="#simulator" class="hover:text-white transition-colors">Тест отклика</a>
+            </nav>
+
+            <!-- Кнопка предзаказа -->
+            <div class="flex items-center gap-4">
+                <button onclick="openModal()" class="neon-btn px-5 py-2.5 rounded-xl text-sm tracking-wide uppercase font-tech">
+                    Предзаказ
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главный экран (Hero Section & Interactive Configurator) -->
+    <section id="configurator" class="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Левая колонка: Описание и Конфигуратор -->
+                <div class="lg:col-span-7 space-y-6 z-10">
+                    <!-- Верхний бейдж -->
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-gray-300">
+                        <span class="w-2 h-2 rounded-full animate-pulse" style="background-color: var(--accent); box-shadow: 0 0 10px var(--accent);"></span>
+                        <span id="edition-badge">Лимитированная серия 2026 • В наличии</span>
+                    </div>
+
+                    <!-- Заголовок -->
+                    <div class="space-y-2">
+                        <h1 class="font-tech text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight uppercase leading-none">
+                            VORTEX <span class="neon-text" id="model-highlight">K-ULTRA PRO</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl text-gray-400 font-normal max-w-2xl">
+                            Ультралегкая киберспортивная беспроводная мышь. Вес всего <span class="text-white font-semibold">49 грамм</span> без отверстий в корпусе, частота опроса <span class="text-white font-semibold">8000 Гц</span> и эталонный сенсор нового поколения.
+                        </p>
+                    </div>
+
+                    <!-- Блок цены и быстрых фич -->
+                    <div class="flex flex-wrap items-baseline gap-4 pt-2">
+                        <div class="font-tech text-4xl sm:text-5xl font-bold text-white tracking-tight" id="hero-price">
+                            8 990 ₽
+                        </div>
+                        <div class="text-sm text-gray-400 line-through" id="hero-old-price">
+                            11 490 ₽
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-white/10 text-white">
+                            Доставка по РФ и СНГ
+                        </span>
+                    </div>
+
+                    <!-- Интерактивный переключатель расцветок -->
+                    <div class="pt-4 space-y-3">
+                        <div class="flex items-center justify-between max-w-md">
+                            <span class="text-xs uppercase tracking-wider text-gray-400 font-semibold">Выберите исполнение корпуса:</span>
+                            <span id="selected-color-name" class="text-xs font-bold uppercase tracking-wider neon-text">Stealth Black</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl">
+                            <!-- Вариант 1: Stealth Black -->
+                            <button onclick="selectColorway('stealth')" id="btn-stealth" class="color-btn glass-panel p-3.5 rounded-xl flex items-center gap-3 text-left neon-border">
+                                <span class="w-7 h-7 rounded-full bg-[#14151c] border-2 border-[#00f0ff] flex-shrink-0 shadow-[0_0_12px_#00f0ff]"></span>
+                                <div>
+                                    <div class="text-sm font-semibold text-white leading-tight">Stealth Black</div>
+                                    <div class="text-[11px] text-gray-400">8 990 ₽ • Cyan RGB</div>
+                                </div>
+                            </button>
+
+                            <!-- Вариант 2: Cyber Purple -->
+                            <button onclick="selectColorway('purple')" id="btn-purple" class="color-btn glass-panel p-3.5 rounded-xl flex items-center gap-3 text-left">
+                                <span class="w-7 h-7 rounded-full bg-[#1f1230] border-2 border-[#b829ff] flex-shrink-0 shadow-[0_0_12px_#b829ff]"></span>
+                                <div>
+                                    <div class="text-sm font-semibold text-white leading-tight">Cyber Purple</div>
+                                    <div class="text-[11px] text-gray-400">9 490 ₽ • Special</div>
+                                </div>
+                            </button>
+
+                            <!-- Вариант 3: Crimson Strike -->
+                            <button onclick="selectColorway('crimson')" id="btn-crimson" class="color-btn glass-panel p-3.5 rounded-xl flex items-center gap-3 text-left">
+                                <span class="w-7 h-7 rounded-full bg-[#2b0f18] border-2 border-[#ff2a54] flex-shrink-0 shadow-[0_0_12px_#ff2a54]"></span>
+                                <div>
+                                    <div class="text-sm font-semibold text-white leading-tight">Crimson Strike</div>
+                                    <div class="text-[11px] text-gray-400">9 490 ₽ • Limited</div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Кнопки действий -->
+                    <div class="pt-4 flex flex-wrap items-center gap-4">
+                        <button onclick="openModal()" class="neon-btn px-8 py-4 rounded-xl text-base font-tech uppercase tracking-wider flex items-center gap-3">
+                            <span>Оформить предзаказ</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </button>
+                        <a href="#specs" class="neon-btn-outline px-6 py-4 rounded-xl text-sm font-semibold">
+                            Изучить технологии
+                        </a>
+                    </div>
+
+                    <!-- Мини-инфографика под кнопками -->
+                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 max-w-lg">
+                        <div>
+                            <div class="font-tech text-2xl font-bold text-white">0.125 мс</div>
+                            <div class="text-xs text-gray-400">Задержка клика</div>
+                        </div>
+                        <div>
+                            <div class="font-tech text-2xl font-bold text-white">4K / 8K Донгл</div>
+                            <div class="text-xs text-gray-400">В комплекте поставки</div>
+                        </div>
+                        <div>
+                            <div class="font-tech text-2xl font-bold text-white">2 года</div>
+                            <div class="text-xs text-gray-400">Официальной гарантии</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая колонка: Высокодетализированная интерактивная SVG-иллюстрация мыши -->
+                <div class="lg:col-span-5 relative flex items-center justify-center">
+                    <!-- Динамическое фоновое свечение -->
+                    <div class="hero-glow absolute w-[420px] h-[420px] sm:w-[500px] sm:h-[500px] rounded-full pointer-events-none"></div>
+
+                    <!-- Контейнер иллюстрации -->
+                    <div class="relative z-10 w-full max-w-[380px] flex flex-col items-center">
+                        <div class="animate-float w-full flex justify-center">
+                            <svg id="mouse-svg" viewBox="0 0 360 540" class="w-full h-auto max-h-[460px] drop-shadow-2xl" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <!-- Фильтр неонового свечения -->
+                                    <filter id="neon-glow" x="-30%" y="-30%" width="160%" height="160%">
+                                        <feGaussianBlur stdDeviation="8" result="blur" />
+                                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                    </filter>
+                                    <linearGradient id="body-grad" x1="180" y1="40" x2="180" y2="500" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="var(--mouse-panels)" />
+                                        <stop offset="100%" stop-color="var(--mouse-body)" />
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- Внешний контур RGB-подсветки снизу (Underglow) -->
+                                <path d="M110 430 C110 475, 145 505, 180 505 C215 505, 250 475, 250 430" 
+                                      stroke="var(--accent)" stroke-width="6" stroke-linecap="round" filter="url(#neon-glow)" opacity="0.85"/>
+
+                                <!-- Основной симметричный корпус мыши -->
+                                <path d="M180 45 C120 45, 88 85, 88 165 C88 235, 98 280, 96 340 C94 415, 118 495, 180 495 C242 495, 266 415, 264 340 C262 280, 272 235, 272 165 C272 85, 240 45, 180 45 Z" 
+                                      fill="url(#body-grad)" stroke="var(--mouse-shell-stroke)" stroke-width="3"/>
+
+                                <!-- Левая основная кнопка (ЛКМ) -->
+                                <path d="M175 46 C125 48, 92 85, 90 165 C90 190, 92 208, 94 222 L156 222 C156 180, 156 130, 175 110 Z" 
+                                      fill="var(--mouse-panels)" stroke="var(--mouse-shell-stroke)" stroke-width="2"/>
+
+                                <!-- Правая основная кнопка (ПКМ) -->
+                                <path d="M185 46 C235 48, 268 85, 270 165 C270 190, 268 208, 266 222 L204 222 C204 180, 204 130, 185 110 Z" 
+                                      fill="var(--mouse-panels)" stroke="var(--mouse-shell-stroke)" stroke-width="2"/>
+
+                                <!-- Разделительная технологическая линия по центру и вокруг скролла -->
+                                <path d="M94 222 L156 222 L165 245 L195 245 L204 222 L266 222" 
+                                      stroke="var(--accent)" stroke-width="2" opacity="0.7"/>
+
+                                <!-- Боковые программируемые кнопки (слева) -->
+                                <path d="M88 205 C83 205, 82 215, 82 232 C82 248, 84 252, 89 252 Z" fill="var(--accent)" opacity="0.9"/>
+                                <path d="M89 260 C84 260, 83 270, 83 287 C83 302, 85 307, 91 307 Z" fill="var(--accent)" opacity="0.9"/>
+
+                                <!-- Островок колеса прокрутки -->
+                                <rect x="162" y="95" width="36" height="92" rx="18" fill="#0c0d12" stroke="var(--mouse-shell-stroke)" stroke-width="2"/>
+                                
+                                <!-- Само колесо прокрутки с RGB-ободом -->
+                                <rect x="168" y="106" width="24" height="68" rx="12" fill="#181a24" stroke="var(--accent)" stroke-width="2.5" filter="url(#neon-glow)"/>
+                                <!-- Протектор колеса -->
+                                <line x1="173" y1="122" x2="187" y2="122" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="173" y1="134" x2="187" y2="134" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="173" y1="146" x2="187" y2="146" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="173" y1="158" x2="187" y2="158" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+
+                                <!-- Индикатор профиля DPI -->
+                                <polygon points="180,202 174,212 186,212" fill="var(--accent)" filter="url(#neon-glow)"/>
+
+                                <!-- Декоративные аэродинамические линии на спинке -->
+                                <path d="M120 310 C130 360, 145 410, 165 445" stroke="var(--mouse-shell-stroke)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M240 310 C230 360, 215 410, 195 445" stroke="var(--mouse-shell-stroke)" stroke-width="2" stroke-linecap="round"/>
+
+                                <!-- Светящийся логотип VORTEX на спинке мыши -->
+                                <g filter="url(#neon-glow)">
+                                    <path d="M162 355 L180 392 L198 355 H189 L180 374 L171 355 H162 Z" fill="var(--accent)"/>
+                                </g>
+
+                                <!-- Технические метки вокруг чертежа -->
+                                <g opacity="0.65" class="font-tech">
+                                    <line x1="35" y1="140" x2="80" y2="140" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 3"/>
+                                    <circle cx="80" cy="140" r="3" fill="var(--accent)"/>
+                                    <text x="10" y="134" fill="#9ca3af" font-size="11" font-weight="bold">OPTICAL V3</text>
+
+                                    <line x1="275" y1="270" x2="325" y2="270" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 3"/>
+                                    <circle cx="275" cy="270" r="3" fill="var(--accent)"/>
+                                    <text x="285" y="263" fill="#9ca3af" font-size="11" font-weight="bold">49 ГРАММ</text>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <!-- Плашка-индикатор активной конфигурации под мышью -->
+                        <div class="glass-panel px-5 py-3 rounded-2xl flex items-center gap-6 border border-white/10 mt-2">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-400">Сенсор:</span>
+                                <span class="text-xs font-bold text-white font-tech tracking-wider">PAW3950 ULTRA</span>
+                            </div>
+                            <div class="w-px h-4 bg-white/10"></div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-400">Частота:</span>
+                                <span class="text-xs font-bold neon-text font-tech tracking-wider">8000 HZ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция характеристик (Bento Grid Specifications) -->
+    <section id="specs" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Заголовок секции -->
+            <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-[0.25em] neon-text">Инженерное превосходство</span>
+                <h2 class="font-tech text-4xl sm:text-5xl font-extrabold uppercase tracking-tight text-white">
+                    Создана для побед в киберспорте
+                </h2>
+                <p class="text-gray-400 text-base">
+                    Каждый компонент VORTEX K-Ultra Pro спроектирован с нуля ради снижения веса и абсолютной точности наведения.
+                </p>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6">
+                
+                <!-- Карточка 1: 49 грамм (Крупная) -->
+                <div class="md:col-span-6 lg:col-span-7 glass-panel rounded-3xl p-8 relative overflow-hidden group">
+                    <div class="relative z-10 flex flex-col justify-between h-full space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold text-gray-300">
+                                Монолитный экзоскелет
+                            </span>
+                            <svg class="w-8 h-8 text-[var(--accent)] opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/>
+                                <line x1="16" y1="8" x2="2" y2="22" stroke-width="1.75"/>
+                                <line x1="17.5" y1="15" x2="9" y2="15" stroke-width="1.75"/>
+                            </svg>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="font-tech text-6xl sm:text-7xl font-extrabold neon-text leading-none">
+                                49 ГРАММ
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">Ультралегкий корпус без сот и отверстий</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed max-w-xl">
+                                Забудьте о пыли внутри мыши и дискомфорте от перфорации. Стенки из композитного полиамида толщиной 0.7 мм с внутренними ребрами жесткости обеспечивают идеальную прочность при рекордной легкости.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 2: 8000 Гц (Средняя) -->
+                <div class="md:col-span-6 lg:col-span-5 glass-panel rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between space-y-6">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold text-gray-300">
+                            Технология HyperSpeed Wireless
+                        </span>
+                        <svg class="w-8 h-8 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex items-baseline gap-3">
+                            <span class="font-tech text-5xl sm:text-6xl font-extrabold text-white">8000 ГЦ</span>
+                            <span class="font-tech text-xl font-bold neon-text">0.125 МС</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Беспроводная частота опроса</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Передача данных в 8 раз быстрее стандартных игровых мышей (1000 Гц). Идеальная плавность курсора на мониторах 240 Гц, 360 Гц и 540 Гц.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Карточка 3: 30 000 DPI Сенсор -->
+                <div class="md:col-span-6 lg:col-span-4 glass-panel rounded-3xl p-7 flex flex-col justify-between space-y-5">
+                    <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="9" stroke-width="1.75"/>
+                            <circle cx="12" cy="12" r="3" stroke-width="1.75"/>
+                            <path stroke-linecap="round" stroke-width="1.75" d="M12 3v3m0 12v3M3 12h3m12 0h3"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="font-tech text-4xl font-extrabold text-white">30 000 DPI</div>
+                        <h3 class="text-lg font-bold text-white">Оптический сенсор нового поколения</h3>
+                        <p class="text-gray-400 text-sm">
+                            Скорость отслеживания 750 IPS и ускорение до 50G. Точность 99.8% без аппаратного сглаживания и срывов даже на стеклянных коврах.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Карточка 4: Автономность 120 часов -->
+                <div class="md:col-span-6 lg:col-span-4 glass-panel rounded-3xl p-7 flex flex-col justify-between space-y-5">
+                    <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="16" height="10" rx="2" stroke-width="1.75"/>
+                            <line x1="22" y1="11" x2="22" y2="13" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M6 10v4m4-4v4m4-4v4" stroke-width="1.75" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="font-tech text-4xl font-extrabold text-white">ДО 120 ЧАСОВ</div>
+                        <h3 class="text-lg font-bold text-white">Автономность и зарядка Type-C</h3>
+                        <p class="text-gray-400 text-sm">
+                            Энергоэффективный чипсет Nordic и быстрая зарядка: всего 15 минут у кабеля дают до 25 часов непрерывных рейтинговых матчей.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Карточка 5: Оптические микрики -->
+                <div class="md:col-span-12 lg:col-span-4 glass-panel rounded-3xl p-7 flex flex-col justify-between space-y-5">
+                    <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="font-tech text-4xl font-extrabold text-white">100 МЛН КЛИКОВ</div>
+                        <h3 class="text-lg font-bold text-white">Оптические микропереключатели</h3>
+                        <p class="text-gray-400 text-sm">
+                            Срабатывание со скоростью света за счет инфракрасного луча. Полное отсутствие риска двойного клика (даблклика) и тактильный отклик.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Интерактивное сравнение и калькулятор частоты опроса -->
+    <section id="comparison" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                <!-- Левая часть: Сравнение прогресс-барами -->
+                <div class="lg:col-span-7 glass-panel rounded-3xl p-8 sm:p-10 space-y-8">
+                    <div class="space-y-2">
+                        <span class="text-xs font-bold uppercase tracking-widest neon-text">Наглядная разница</span>
+                        <h3 class="font-tech text-3xl sm:text-4xl font-extrabold uppercase text-white">
+                            VORTEX K-Ultra Pro vs Обычная игровая мышь
+                        </h3>
+                        <p class="text-sm text-gray-400">
+                            Сравнение ключевых показателей с популярными беспроводными мышами прошлого поколения.
+                        </p>
+                    </div>
+
+                    <div class="space-y-7">
+                        <!-- Показатель 1: Масса -->
+                        <div class="space-y-2.5">
+                            <div class="flex justify-between text-sm">
+                                <span class="font-semibold text-white">Вес устройства (меньше — быстрее флики)</span>
+                                <span class="font-tech font-bold neon-text">На 45% легче</span>
+                            </div>
+                            <!-- Бар VORTEX -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-xs text-gray-300">
+                                    <span>VORTEX K-Ultra Pro</span>
+                                    <span class="font-bold text-white">49 г</span>
+                                </div>
+                                <div class="w-full h-3 bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full rounded-full transition-all duration-500" style="width: 45%; background-color: var(--accent); box-shadow: 0 0 12px var(--accent);"></div>
+                                </div>
+                            </div>
+                            <!-- Бар Обычной мыши -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-xs text-gray-500">
+                                    <span>Обычная игровая мышь</span>
+                                    <span>89 г</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gray-600 rounded-full" style="width: 89%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Показатель 2: Задержка сигнала -->
+                        <div class="space-y-2.5">
+                            <div class="flex justify-between text-sm">
+                                <span class="font-semibold text-white">Время отклика беспроводной связи</span>
+                                <span class="font-tech font-bold neon-text">В 8 раз быстрее</span>
+                            </div>
+                            <!-- Бар VORTEX -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-xs text-gray-300">
+                                    <span>VORTEX K-Ultra Pro (8000 Гц)</span>
+                                    <span class="font-bold text-white">0.125 мс</span>
+                                </div>
+                                <div class="w-full h-3 bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full rounded-full transition-all duration-500" style="width: 96%; background-color: var(--accent); box-shadow: 0 0 12px var(--accent);"></div>
+                                </div>
+                            </div>
+                            <!-- Бар Обычной мыши -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-xs text-gray-500">
+                                    <span>Стандартный радиоканал (1000 Гц)</span>
+                                    <span>1.000 мс</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gray-600 rounded-full" style="width: 25%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Показатель 3: Точность сенсора -->
+                        <div class="space-y-2.5">
+                            <div class="flex justify-between text-sm">
+                                <span class="font-semibold text-white">Максимальная скорость и разрешение сенсора</span>
+                                <span class="font-tech font-bold neon-text">30 000 DPI / 750 IPS</span>
+                            </div>
+                            <!-- Бар VORTEX -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-xs text-gray-300">
+                                    <span>Сенсор VORTEX PAW3950 Ultra</span>
+                                    <span class="font-bold text-white">99.8% точность</span>
+                                </div>
+                                <div class="w-full h-3 bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full rounded-full transition-all duration-500" style="width: 99%; background-color: var(--accent); box-shadow: 0 0 12px var(--accent);"></div>
+                                </div>
+                            </div>
+                            <!-- Бар Обычной мыши -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-xs text-gray-500">
+                                    <span>Базовый оптический сенсор</span>
+                                    <span>16 000 DPI / 400 IPS</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gray-600 rounded-full" style="width: 55%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая часть: Интерактивный калькулятор отклика и DPI -->
+                <div id="simulator" class="lg:col-span-5 glass-panel rounded-3xl p-8 sm:p-10 space-y-6 border border-white/10">
+                    <div class="space-y-2">
+                        <span class="text-xs font-bold uppercase tracking-widest neon-text">Интерактивный стенд</span>
+                        <h3 class="font-tech text-3xl font-extrabold uppercase text-white">
+                            Калькулятор частоты опроса
+                        </h3>
+                        <p class="text-xs text-gray-400">
+                            Выберите режим работы ресивера, чтобы рассчитать интервал обновления координат и автономность.
+                        </p>
+                    </div>
+
+                    <!-- Переключатель частоты (Polling Rate) -->
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase tracking-wider text-gray-400 font-semibold">Частота опроса (Polling Rate):</label>
+                        <div class="grid grid-cols-4 gap-2">
+                            <button onclick="setPollingRate(1000)" id="hz-1000" class="hz-btn py-2.5 rounded-xl text-sm font-tech font-bold bg-white/5 border border-white/10 text-gray-300 hover:text-white">
+                                1000 Гц
+                            </button>
+                            <button onclick="setPollingRate(2000)" id="hz-2000" class="hz-btn py-2.5 rounded-xl text-sm font-tech font-bold bg-white/5 border border-white/10 text-gray-300 hover:text-white">
+                                2000 Гц
+                            </button>
+                            <button onclick="setPollingRate(4000)" id="hz-4000" class="hz-btn py-2.5 rounded-xl text-sm font-tech font-bold bg-white/5 border border-white/10 text-gray-300 hover:text-white">
+                                4000 Гц
+                            </button>
+                            <button onclick="setPollingRate(8000)" id="hz-8000" class="hz-btn py-2.5 rounded-xl text-sm font-tech font-bold neon-border text-white bg-white/10">
+                                8000 Гц
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Ползунок настройки чувствительности DPI -->
+                    <div class="space-y-2 pt-2">
+                        <div class="flex justify-between items-center">
+                            <label for="dpi-slider" class="text-xs uppercase tracking-wider text-gray-400 font-semibold">Чувствительность сенсора:</label>
+                            <span id="dpi-value" class="font-tech text-xl font-bold neon-text">1600 DPI</span>
+                        </div>
+                        <input id="dpi-slider" type="range" min="400" max="30000" step="100" value="1600" oninput="updateDpiCalc(this.value)"
+                               class="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[var(--accent)]">
+                        <div class="flex justify-between text-[11px] text-gray-500 font-tech">
+                            <span>400 DPI (CS2 / Valorant)</span>
+                            <span>16 000 DPI</span>
+                            <span>30 000 DPI</span>
+                        </div>
+                    </div>
+
+                    <!-- Табло результатов расчета -->
+                    <div class="p-5 rounded-2xl bg-black/40 border border-white/10 space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <div class="text-xs text-gray-400">Интервал отклика:</div>
+                                <div id="calc-latency" class="font-tech text-3xl font-extrabold neon-text">0.125 мс</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Пакеты данных / сек:</div>
+                                <div id="calc-packets" class="font-tech text-3xl font-extrabold text-white">8 000</div>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+                            <span class="text-xs text-gray-400">Расчетное время работы от АКБ:</span>
+                            <span id="calc-battery" class="font-tech text-lg font-bold text-white">~38 часов</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-400">Рекомендуемый монитор:</span>
+                            <span id="calc-monitor" class="text-xs font-semibold text-gray-200">240 Гц – 540 Гц</span>
+                        </div>
+                    </div>
+
+                    <button onclick="openModal()" class="w-full neon-btn py-3.5 rounded-xl font-tech uppercase tracking-wider text-sm">
+                        Забронировать мышь с донглом 8K
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="border-t border-white/10 py-12 mt-10 bg-black/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-white/5 border border-white/10">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 4L12 20L20 4H16L12 12L8 4H4Z" fill="var(--accent)"/>
+                    </svg>
+                </div>
+                <span class="font-tech text-xl font-bold tracking-wider text-white">VORTEX GEAR</span>
+            </div>
+            <p class="text-xs text-gray-500 text-center">
+                © 2026 VORTEX Esports Lab. Концепт промо-лендинга для портфолио веб-разработчика.
+            </p>
+            <div class="flex gap-4 text-xs text-gray-400">
+                <a href="#configurator" class="hover:text-white transition-colors">Наверх ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно предзаказа (Interactive Pre-order Modal) -->
+    <div id="preorder-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-8 relative border border-white/15 shadow-2xl">
+            
+            <!-- Кнопка закрытия -->
+            <button onclick="closeModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+                ✕
+            </button>
+
+            <!-- Контейнер формы предзаказа -->
+            <div id="modal-form-view" class="space-y-6">
+                <div class="space-y-1">
+                    <span class="text-xs font-bold uppercase tracking-widest neon-text">Быстрое оформление</span>
+                    <h3 class="font-tech text-3xl font-extrabold uppercase text-white">Предзаказ VORTEX K-Ultra Pro</h3>
+                </div>
+
+                <!-- Сводка выбранной модели -->
+                <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between">
+                    <div class="flex items-center gap-3.5">
+                        <span id="modal-color-dot" class="w-8 h-8 rounded-full border-2" style="background-color: #14151c; border-color: var(--accent); box-shadow: 0 0 10px var(--accent);"></span>
+                        <div>
+                            <div class="text-sm font-bold text-white" id="modal-model-title">VORTEX K-Ultra Pro — Stealth Black</div>
+                            <div class="text-xs text-gray-400">Комплект: Мышь + Ресивер 8000 Гц + Кабель Паракорд + Грипсы</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Форма -->
+                <form id="preorder-form" onsubmit="submitPreorder(event)" class="space-y-4" novalidate>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-1.5">Ваше имя *</label>
+                        <input type="text" id="input-name" placeholder="Например, Александр" required
+                               class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white text-sm focus:outline-none focus:border-[var(--accent)] transition-colors">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-1.5">Telegram или Телефон *</label>
+                            <input type="text" id="input-contact" placeholder="@username или +7..." required
+                                   class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white text-sm focus:outline-none focus:border-[var(--accent)] transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-1.5">Город доставки *</label>
+                            <input type="text" id="input-city" placeholder="Москва / Санкт-Петербург..." required
+                                   class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white text-sm focus:outline-none focus:border-[var(--accent)] transition-colors">
+                        </div>
+                    </div>
+
+                    <!-- Поле промокода с живым пересчетом -->
+                    <div>
+                        <div class="flex justify-between items-center mb-1.5">
+                            <label class="text-xs uppercase tracking-wider text-gray-400 font-semibold">Промокод на скидку</label>
+                            <span class="text-[11px] text-gray-400">Подсказка: введите <strong class="neon-text cursor-pointer" onclick="applyHintPromo()">START</strong> для скидки 10%</span>
+                        </div>
+                        <div class="relative">
+                            <input type="text" id="input-promo" oninput="recalculateModalPrice()" placeholder="Введите промокод..."
+                                   class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white text-sm uppercase focus:outline-none focus:border-[var(--accent)] transition-colors">
+                            <span id="promo-status" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-bold hidden"></span>
+                        </div>
+                    </div>
+
+                    <!-- Сообщение об ошибке валидации -->
+                    <div id="form-error" class="hidden p-3 rounded-xl bg-red-500/15 border border-red-500/40 text-xs text-red-300">
+                        Пожалуйста, заполните все обязательные поля корректно.
+                    </div>
+
+                    <!-- Итоговая сумма -->
+                    <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-400 block">Итого к оплате при получении:</span>
+                            <span id="discount-badge" class="text-[11px] font-semibold neon-text hidden">Скидка 10% по промокоду START применена!</span>
+                        </div>
+                        <div class="text-right">
+                            <span id="modal-old-price" class="text-xs text-gray-500 line-through mr-2 hidden"></span>
+                            <span id="modal-total-price" class="font-tech text-3xl font-extrabold text-white">8 990 ₽</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full neon-btn py-4 rounded-xl font-tech uppercase tracking-wider text-base">
+                        Подтвердить предзаказ
+                    </button>
+                </form>
+            </div>
+
+            <!-- Экран успешной отправки (скрыт по умолчанию) -->
+            <div id="modal-success-view" class="hidden py-8 text-center space-y-5">
+                <div class="w-16 h-16 rounded-2xl mx-auto flex items-center justify-center bg-white/5 border neon-border">
+                    <svg class="w-8 h-8 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+                <div class="space-y-2">
+                    <h4 class="font-tech text-3xl font-extrabold uppercase text-white">Заявка успешно принята!</h4>
+                    <p class="text-sm text-gray-300 max-w-md mx-auto" id="success-summary-text">
+                        Мы забронировали вашу мышь на складе. Менеджер свяжется с вами в течение 15 минут для подтверждения отправки.
+                    </p>
+                </div>
+                <div class="p-4 rounded-2xl bg-black/40 border border-white/10 text-left text-xs space-y-1.5 text-gray-300">
+                    <div class="flex justify-between"><span>Номер резерва:</span> <strong class="text-white font-tech">#VX-84920</strong></div>
+                    <div class="flex justify-between"><span>Модель:</span> <strong id="receipt-model" class="neon-text">Stealth Black</strong></div>
+                    <div class="flex justify-between"><span>Итоговая сумма:</span> <strong id="receipt-price" class="text-white">8 990 ₽</strong></div>
+                </div>
+                <button onclick="closeModal()" class="neon-btn-outline px-8 py-3 rounded-xl text-sm font-semibold">
+                    Вернуться на сайт
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Логика конфигуратора, калькулятора и формы (JavaScript) -->
+    <script>
+        // База данных расцветок девайса
+        const COLORWAYS = {
+            stealth: {
+                id: 'stealth',
+                name: 'Stealth Black',
+                price: 8990,
+                oldPrice: 11490,
+                badge: 'Лимитированная серия 2026 • В наличии',
+                accent: '#00f0ff',
+                accentRgb: '0, 240, 255',
+                mouseBody: '#14151c',
+                mousePanels: '#1d1f29',
+                mouseStroke: '#2c3040'
+            },
+            purple: {
+                id: 'purple',
+                name: 'Cyber Purple',
+                price: 9490,
+                oldPrice: 11990,
+                badge: 'Специальное издание Cyber Edition • Осталось 14 шт.',
+                accent: '#b829ff',
+                accentRgb: '184, 41, 255',
+                mouseBody: '#191024',
+                mousePanels: '#251736',
+                mouseStroke: '#432763'
+            },
+            crimson: {
+                id: 'crimson',
+                name: 'Crimson Strike',
+                price: 9490,
+                oldPrice: 11990,
+                badge: 'Эксклюзивная серия Crimson • Осталось 9 шт.',
+                accent: '#ff2a54',
+                accentRgb: '255, 42, 84',
+                mouseBody: '#210d14',
+                mousePanels: '#30131d',
+                mouseStroke: '#572032'
+            }
+        };
+
+        let currentColor = COLORWAYS.stealth;
+        let currentPollingRate = 8000;
+
+        // Форматирование цены с пробелами
+        function formatPrice(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " ₽";
+        }
+
+        // Функция переключения расцветки мыши
+        function selectColorway(key) {
+            const config = COLORWAYS[key];
+            if (!config) return;
+            currentColor = config;
+
+            // Обновляем CSS-переменные на корневом элементе
+            const root = document.documentElement;
+            root.style.setProperty('--accent', config.accent);
+            root.style.setProperty('--accent-rgb', config.accentRgb);
+            root.style.setProperty('--mouse-body', config.mouseBody);
+            root.style.setProperty('--mouse-panels', config.mousePanels);
+            root.style.setProperty('--mouse-shell-stroke', config.mouseStroke);
+
+            // Обновляем тексты и цены в Hero-секции
+            document.getElementById('selected-color-name').textContent = config.name;
+            document.getElementById('edition-badge').textContent = config.badge;
+            document.getElementById('hero-price').textContent = formatPrice(config.price);
+            document.getElementById('hero-old-price').textContent = formatPrice(config.oldPrice);
+
+            // Подсветка активной кнопки выбора цвета
+            document.querySelectorAll('.color-btn').forEach(btn => {
+                btn.classList.remove('neon-border');
+            });
+            document.getElementById(`btn-${key}`).classList.add('neon-border');
+
+            // Обновляем данные в модальном окне, если его откроют
+            recalculateModalPrice();
+        }
+
+        // Интерактивный калькулятор частоты опроса (Polling Rate)
+        function setPollingRate(hz) {
+            currentPollingRate = hz;
+            
+            // Стили кнопок
+            document.querySelectorAll('.hz-btn').forEach(btn => {
+                btn.classList.remove('neon-border', 'text-white', 'bg-white/10');
+                btn.classList.add('text-gray-300', 'bg-white/5');
+            });
+            const activeBtn = document.getElementById(`hz-${hz}`);
+            activeBtn.classList.add('neon-border', 'text-white', 'bg-white/10');
+
+            // Расчет технических параметров
+            const latency = (1000 / hz).toFixed(hz >= 4000 ? 3 : 2);
+            const batteryMap = {
+                1000: '~120 часов',
+                2000: '~85 часов',
+                4000: '~55 часов',
+                8000: '~38 часов'
+            };
+            const monitorMap = {
+                1000: '60 Гц – 144 Гц',
+                2000: '144 Гц – 240 Гц',
+                4000: '240 Гц – 360 Гц',
+                8000: '240 Гц – 540 Гц'
+            };
+
+            document.getElementById('calc-latency').textContent = `${latency} мс`;
+            document.getElementById('calc-packets').textContent = hz.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            document.getElementById('calc-battery').textContent = batteryMap[hz];
+            document.getElementById('calc-monitor').textContent = monitorMap[hz];
+        }
+
+        // Обновление значения ползунка DPI
+        function updateDpiCalc(val) {
+            const formattedDpi = val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            document.getElementById('dpi-value').textContent = `${formattedDpi} DPI`;
+        }
+
+        // Открытие модального окна предзаказа
+        function openModal() {
+            const modal = document.getElementById('preorder-modal');
+            document.getElementById('modal-form-view').classList.remove('hidden');
+            document.getElementById('modal-success-view').classList.add('hidden');
+            document.getElementById('form-error').classList.add('hidden');
+
+            // Синхронизируем выбранный цвет
+            document.getElementById('modal-model-title').textContent = `VORTEX K-Ultra Pro — ${currentColor.name}`;
+            const dot = document.getElementById('modal-color-dot');
+            dot.style.backgroundColor = currentColor.mouseBody;
+            dot.style.borderColor = currentColor.accent;
+            dot.style.boxShadow = `0 0 10px ${currentColor.accent}`;
+
+            recalculateModalPrice();
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Закрытие модального окна
+        function closeModal() {
+            const modal = document.getElementById('preorder-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Быстрая подстановка промокода по клику на подсказку
+        function applyHintPromo() {
+            const promoInput = document.getElementById('input-promo');
+            promoInput.value = 'START';
+            recalculateModalPrice();
+        }
+
+        // Пересчет стоимости с учетом промокода START (-10%)
+        function recalculateModalPrice() {
+            const promoInput = document.getElementById('input-promo');
+            const promoCode = promoInput ? promoInput.value.trim().toUpperCase() : '';
+            const basePrice = currentColor.price;
+
+            const statusEl = document.getElementById('promo-status');
+            const discountBadge = document.getElementById('discount-badge');
+            const oldPriceEl = document.getElementById('modal-old-price');
+            const totalPriceEl = document.getElementById('modal-total-price');
+
+            if (promoCode === 'START') {
+                const discounted = Math.round(basePrice * 0.9);
+                statusEl.textContent = '✓ -10%';
+                statusEl.className = 'absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-bold neon-text';
+                discountBadge.classList.remove('hidden');
+                oldPriceEl.textContent = formatPrice(basePrice);
+                oldPriceEl.classList.remove('hidden');
+                totalPriceEl.textContent = formatPrice(discounted);
+                return discounted;
+            } else {
+                if (promoCode.length > 0) {
+                    statusEl.textContent = 'Не найден';
+                    statusEl.className = 'absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-gray-500';
+                } else {
+                    statusEl.classList.add('hidden');
+                }
+                discountBadge.classList.add('hidden');
+                oldPriceEl.classList.add('hidden');
+                totalPriceEl.textContent = formatPrice(basePrice);
+                return basePrice;
+            }
+        }
+
+        // Обработка отправки формы предзаказа
+        function submitPreorder(event) {
+            event.preventDefault();
+            const name = document.getElementById('input-name').value.trim();
+            const contact = document.getElementById('input-contact').value.trim();
+            const city = document.getElementById('input-city').value.trim();
+            const errorBox = document.getElementById('form-error');
+
+            if (name.length < 2 || contact.length < 3 || city.length < 2) {
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            errorBox.classList.add('hidden');
+            const finalPrice = recalculateModalPrice();
+
+            // Заполняем квитанцию об успешном заказе
+            document.getElementById('success-summary-text').textContent = 
+                `${name}, мы забронировали VORTEX K-Ultra Pro с доставкой в г. ${city}. Свяжемся с вами по контакту ${contact} в ближайшее время!`;
+            document.getElementById('receipt-model').textContent = `VORTEX K-Ultra Pro (${currentColor.name})`;
+            document.getElementById('receipt-price').textContent = formatPrice(finalPrice);
+
+            // Переключаем экран внутри модалки
+            document.getElementById('modal-form-view').classList.add('hidden');
+            document.getElementById('modal-success-view').classList.remove('hidden');
+        }
+
+        // Закрытие модального окна по клику на фон
+        document.getElementById('preorder-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+</body>
+</html>
